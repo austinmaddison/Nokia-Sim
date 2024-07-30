@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3lcn3pl5unre"]
+
+[ext_resource type="Material" uid="uid://mk743ljw75ic" path="res://Screen.tres" id="1_33pj0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fnms0"]
+
+[node name="Snake" type="Node3D"]
+
+[node name="ScreenQuad" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.74, 0, 0, 0)
+material_override = ExtResource("1_33pj0")
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("PlaneMesh_fnms0")
+skeleton = NodePath("../Phone")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Snake2D" type="Node2D" parent="SubViewport"]
+
+[node name="Phone" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360629, 0, 0.636166)

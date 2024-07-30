@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://mk743ljw75ic"]
+
+[ext_resource type="Shader" path="res://Screen.gdshader" id="1_htxd0"]
+[ext_resource type="Texture2D" uid="uid://dlyos1oukt7r2" path="res://Assets/Sprites/logo.png" id="2_du2yn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_htxd0")
+shader_parameter/depth = 0.017
+shader_parameter/normal_depth = 1.0
+shader_parameter/roughness = 0.054
+shader_parameter/metallic = 0.591
+shader_parameter/refractive_index = 1.805
+shader_parameter/pixels_x = 108.0
+shader_parameter/pixels_y = 77.0
+shader_parameter/bitmap_texture = ExtResource("2_du2yn")
