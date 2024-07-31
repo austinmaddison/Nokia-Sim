@@ -13,6 +13,9 @@ uniform float pixels_x = 108.0;
 uniform float pixels_y = 77.0;
 
 
+uniform vec2 bias: hint_range(10.0, -10.0) = vec2(0.0, 0.0);
+
+
 varying vec3 ro;
 varying vec3 p;
 varying vec3 vertex_normal_ws;
@@ -43,17 +46,18 @@ void fragment(){
 	
 	vec3 ior_offset = NORMAL * refractive_index;
 	ior_offset = vec3(0);
-	vec3 rd = normalize(p - ro - ior_offset) * depth;
+	vec3 rd = normalize(p - ro) * depth;
 	//vec3 rd = normalize(p - ro) - ( (p - ro) * refractive_index) * depth;
-	vec2 offset = rd.xz;
+	vec2 offset = rd.xz + bias;
 	float shadow = texture(bitmap_texture, UV + offset + (normal.xy)).r * grid(UV + offset + (normal.xy));
 		
 	ALBEDO = vec3(opaque + shadow * 0.1);		
+	// ALBEDO = vec3();		
 	
 	//ALBEDO = rd;
 	//ALBEDO = blendOverlay(opaque, shadow);
 	
-	ROUGHNESS = smoothstep(roughness, 1.0, max(opaque * 0.5, shadow * 0.2));
+	// ROUGHNESS = smoothstep(roughness, 1.0, max(opaque * 0.5, shadow * 0.2));
 	METALLIC = metallic;
 }
 
