@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Snake"
-config/features=PackedStringArray("4.2", "Forward Plus")
+run/main_scene="res://viz.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Draw3D="*res://Draw3D.gd"
 
 [dotnet]
 
@@ -20,6 +25,5 @@ project/assembly_name="Snake"
 
 [rendering]
 
-anti_aliasing/quality/msaa_2d=1
-anti_aliasing/quality/msaa_3d=2
-anti_aliasing/quality/use_taa=true
+anti_aliasing/quality/msaa_2d=2
+anti_aliasing/quality/msaa_3d=3
