@@ -4,4 +4,4 @@
 cull_mode = 2
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.415686, 0.6, 0.270588, 1)
+albedo_color = Color(0.426797, 0.61, 0.2867, 1)

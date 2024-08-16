@@ -25,5 +25,6 @@ project/assembly_name="Snake"
 
 [rendering]
 
-anti_aliasing/quality/msaa_2d=2
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=3

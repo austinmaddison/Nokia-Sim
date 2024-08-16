@@ -1,7 +1,13 @@
 shader_type spatial;
 
+uniform vec3 color: source_color = vec3(0);
 uniform float pixels_x = 108.0;
 uniform float pixels_y = 77.0;
+uniform vec4 cut = vec4(1000.0);
+uniform vec2 cut_offset = vec2(0);
+
+uniform bool is_grid = true;
+uniform bool is_cut = true;
 
 varying vec3 p;
 void vertex()
@@ -15,7 +21,7 @@ float grid(vec2 st)
 	float h_line = abs((fract(st.y * pixels_y) - 0.5) * 2.0);
 
 	float grid = max(v_line, h_line);
-	grid = smoothstep(0.85, 0.95, grid);
+	grid = smoothstep(0.90, 0.995, grid);
 	return 1.0 - clamp(grid, 0., 1.);
 }
 
@@ -37,8 +43,27 @@ void fragment(){
 	//vec2 offset = rd.xz + bias;
 	//float shadow = texture(bitmap_texture, UV + offset).r * grid(UV + offset);
 		
-	ALBEDO = vec3(grid(p.xz));
-	ALPHA = grid(p.xz);
+	ALBEDO = color;
+	
+	float alpha = 1.0;
+	vec2 uv = p.xz;
+	
+	if(is_grid)
+		alpha *= grid(uv);
+	if(is_cut)
+	{
+		if(uv.x < floor(cut.x + cut_offset.x) / 10.0)
+			alpha *= 0.0;
+		if(uv.x > floor(cut.y + cut_offset.x) / 10.0)
+			alpha *= 0.0;
+		if(uv.y < floor(cut.w + cut_offset.y) / 10.0)
+			alpha *= 0.0;
+		if(uv.y > floor(cut.z + cut_offset.y) / 10.0)
+			alpha *= 0.0;
+	}
+	ALPHA = alpha;
+	
+	
 	//ALBEDO = vec3(p.xz, 0);		
 	
 	//ALBEDO = rd;
