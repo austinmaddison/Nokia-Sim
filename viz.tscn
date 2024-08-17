@@ -82,7 +82,7 @@ directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="Casting" type="Node3D" parent="."]
-transform = Transform3D(0.906706, 0.421764, 0, -0.421764, 0.906706, 0, 0, 0, 1, 4.4486, 0.98313, 1.14726)
+transform = Transform3D(0.757839, 0.652443, 0, -0.652443, 0.757839, 0, 0, 0, 1, 5.20033, 0.341622, 1.14726)
 script = ExtResource("7_wog8f")
 collision_point_mesh = SubResource("SphereMesh_l17vg")
 collision_point_mesh_radius = 0.025

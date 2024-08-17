@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Draw3D="*res://Draw3D.gd"
+MidiController="*res://MidiController.gd"
 
 [dotnet]
 
@@ -28,3 +29,4 @@ project/assembly_name="Snake"
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/use_taa=true
