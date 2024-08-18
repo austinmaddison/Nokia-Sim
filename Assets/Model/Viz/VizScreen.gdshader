@@ -12,7 +12,7 @@ uniform bool is_cut = true;
 varying vec3 p;
 void vertex()
 {
-	p = ((MODEL_MATRIX)*vec4(VERTEX,1.0)).xyz;// Get fragment position in world space coordinates
+	p = VERTEX;// Get fragment position in world space coordinates
 }
 
 float grid(vec2 st)
@@ -21,7 +21,7 @@ float grid(vec2 st)
 	float h_line = abs((fract(st.y * pixels_y) - 0.5) * 2.0);
 
 	float grid = max(v_line, h_line);
-	grid = smoothstep(0.90, 0.995, grid);
+	grid = smoothstep(0.90, 0.95, grid);
 	return 1.0 - clamp(grid, 0., 1.);
 }
 
@@ -46,6 +46,7 @@ void fragment(){
 	ALBEDO = color;
 	
 	float alpha = 1.0;
+	//vec3 pm = (VERTEX * vec4(p, 1.0)).xyz;
 	vec2 uv = p.xz;
 	
 	if(is_grid)
@@ -56,17 +57,15 @@ void fragment(){
 			alpha *= 0.0;
 		if(uv.x > floor(cut.y + cut_offset.x) / 10.0)
 			alpha *= 0.0;
-		if(uv.y < floor(cut.w + cut_offset.y) / 10.0)
+		if(uv.y > floor(cut.w + cut_offset.y) / 10.0)
 			alpha *= 0.0;
-		if(uv.y > floor(cut.z + cut_offset.y) / 10.0)
+		if(uv.y < floor(cut.z + cut_offset.y) / 10.0)
 			alpha *= 0.0;
 	}
 	ALPHA = alpha;
 	
 	
-	//ALBEDO = vec3(p.xz, 0);		
 	
-	//ALBEDO = rd;
 	//ALBEDO = blendOverlay(opaque, shadow);
 	
 	//ROUGHNESS = smoothstep(roughness, 1.0, max(opaque * 0.5, shadow * 0.2));
