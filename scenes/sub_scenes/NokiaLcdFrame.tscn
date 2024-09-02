@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkaksmr0udxi7"]
+
+[ext_resource type="PackedScene" uid="uid://cwtd8yqx8evwl" path="res://Assets/model/nokia/nokia_lcd_frame.fbx" id="1_8l16n"]
+[ext_resource type="Material" uid="uid://tjxyo8y77dlg" path="res://Assets/materials/display_frame.tres" id="2_qv48q"]
+
+[node name="LP" instance=ExtResource("1_8l16n")]
+
+[node name="MetalHousing" parent="LCD_Display/MetalPlateBase/Symmetry" index="0"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="Back" parent="LCD_Display/Interfaces/TopPins/Pins" index="0"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="Sides" parent="LCD_Display/Interfaces/TopPins/Pins" index="1"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="Seperators" parent="LCD_Display/Interfaces/TopPins/Pins" index="2"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="Pins_2" parent="LCD_Display/Interfaces/TopPins/Pins" index="3"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="Solder" parent="LCD_Display/Interfaces/TopPins" index="1"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="Interface" parent="LCD_Display/Interfaces" index="1"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="SideCable" parent="LCD_Display" index="2"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="PCB" parent="LCD_Display" index="3"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="BackDetailing" parent="LCD_Display" index="4"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="ScreenBack" parent="LCD_Display/Display" index="0"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")
+
+[node name="ScreenBackInner" parent="LCD_Display/Display" index="1"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_qv48q")

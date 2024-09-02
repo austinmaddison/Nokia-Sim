@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://egkbdkgym32y"]
+
+[ext_resource type="Texture2D" uid="uid://b5k67cd7k8bco" path="res://Assets/model/nokia/tex/wires/wires_basecolor.png" id="1_165s5"]
+[ext_resource type="Texture2D" uid="uid://dicsl5kuao8qf" path="res://Assets/model/nokia/tex/wires/wires_normal.png" id="3_24wkh"]
+[ext_resource type="Texture2D" uid="uid://bg1jid3v8obyg" path="res://Assets/model/nokia/tex/wires/wires_roughness.png" id="4_b01e6"]
+
+[resource]
+albedo_texture = ExtResource("1_165s5")
+metallic_specular = 0.33
+roughness_texture = ExtResource("4_b01e6")
+emission_energy_multiplier = 2.12
+normal_enabled = true
+normal_scale = 2.45
+normal_texture = ExtResource("3_24wkh")
+rim_tint = 1.0
+clearcoat_roughness = 0.0
+subsurf_scatter_strength = 0.08
+backlight = Color(1, 1, 1, 1)
+grow_amount = -0.39

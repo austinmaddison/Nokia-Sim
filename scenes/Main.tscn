@@ -1,0 +1,167 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3lcn3pl5unre"]
+
+[ext_resource type="Shader" path="res://Assets/shaders/screen.gdshader" id="1_i0o1o"]
+[ext_resource type="PackedScene" uid="uid://dkaksmr0udxi7" path="res://scenes/sub_scenes/NokiaLcdFrame.tscn" id="2_2j4qq"]
+[ext_resource type="PackedScene" uid="uid://rj2kg6ofm80d" path="res://scenes/sub_scenes/WireBundle.tscn" id="3_kji6u"]
+[ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://scenes/sub_scenes/snake_2d_game.tscn" id="4_o7dsk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wv7px"]
+viewport_path = NodePath("ScreenSubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d40g5"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_i0o1o")
+shader_parameter/backlight_diffuser_normals_strength = 1.0
+shader_parameter/top_coat_roughness_map_remap = Vector2(0, 0)
+shader_parameter/top_coat_roughness_strength = 1.0
+shader_parameter/shadow_color = Color(0.14, 0.14, 0.14, 1)
+shader_parameter/substrate_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_color = Color(0, 0, 0, 0)
+shader_parameter/backlight_color_emmission_strength = 0.0
+shader_parameter/depth = 0.133
+shader_parameter/normal_depth = 1.0
+shader_parameter/roughness = 0.054
+shader_parameter/metallic = 0.591
+shader_parameter/refractive_index = 1.805
+shader_parameter/pixels_x = 84.0
+shader_parameter/pixels_y = 48.0
+shader_parameter/bias = Vector2(0, 0)
+shader_parameter/bitmap_texture = SubResource("ViewportTexture_wv7px")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fnms0"]
+
+[sub_resource type="Environment" id="Environment_71wc3"]
+background_mode = 1
+sky_rotation = Vector3(0, 2.12581, 0)
+reflected_light_source = 1
+tonemap_mode = 2
+ssr_max_steps = 67
+ssr_fade_in = 0.14489
+ssr_fade_out = 1.68179
+ssr_depth_tolerance = 10.61
+ssil_enabled = true
+ssil_radius = 1.27
+ssil_intensity = 6.64
+ssil_normal_rejection = 0.0
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_levels/2 = 3.1
+glow_levels/4 = 1.0
+glow_levels/7 = 1.15
+glow_bloom = 0.09
+adjustment_enabled = true
+adjustment_contrast = 0.95
+
+[node name="Main" type="Node3D"]
+
+[node name="Phone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="ScreenQuad" type="MeshInstance3D" parent="Phone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.57, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_d40g5")
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("PlaneMesh_fnms0")
+
+[node name="DisplayFrame" parent="Phone" instance=ExtResource("2_2j4qq")]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 0, 0)
+
+[node name="WireBundle" parent="Phone/DisplayFrame" instance=ExtResource("3_kji6u")]
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.924191, 0, 0, 0, 0.924191, 0, 0, 0, 0.924191, 0, 0, 7.02885)
+fov = 15.4
+far = 500.0
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0854486, 1.66002, 1.38673)
+visible = false
+light_energy = 0.007
+light_specular = 0.065
+omni_range = 4.626
+omni_attenuation = -0.308
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.882839, 2.41925, 0.641454)
+visible = false
+light_energy = 0.1
+light_specular = 0.699
+omni_range = 1.671
+omni_attenuation = -0.308
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21158, 2.42732, 0.99243)
+visible = false
+light_energy = 0.1
+light_specular = 0.699
+omni_range = 2.27492
+omni_attenuation = -0.308
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0673694, 2.23993, 0.135837)
+light_energy = 0.1
+light_negative = true
+light_specular = 0.026
+omni_range = 0.997
+omni_attenuation = 0.13
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350144, 1.54605, -0.0588245)
+visible = false
+light_energy = 0.1
+light_negative = true
+light_specular = 0.026
+omni_range = 0.527169
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.447834, 1.54605, -0.0510308)
+visible = false
+light_energy = 0.1
+light_negative = true
+light_specular = 0.026
+omni_range = 0.527169
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.807205, -0.492159, -0.325883, 0.545822, 0.412172, 0.729515, -0.224718, -0.766743, 0.601338, -1.57093, 3.3759, 2.36656)
+light_color = Color(1, 0.982667, 0.96, 1)
+light_energy = 1.5
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 5.14861
+spot_angle = 31.6308
+spot_angle_attenuation = 2.92817
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.285061, -0.704699, 0.649722, 0.952236, 0.130781, -0.27594, 0.109484, 0.697349, 0.708321, 3.90713, -1.91146, 3.52998)
+light_color = Color(0.7098, 0.73086, 0.78, 1)
+light_energy = 0.404
+light_specular = 1.0
+spot_range = 8.63204
+spot_attenuation = 1.29
+spot_angle = 40.26
+spot_angle_attenuation = 4.14105
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53981, 0.0125247, -0.0121679)
+size = Vector3(7.14893, 10.1038, 12.3232)
+origin_offset = Vector3(0.466797, -0.787109, 0.642578)
+ambient_mode = 2
+ambient_color = Color(0.519426, 0.519426, 0.519426, 1)
+ambient_color_energy = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_71wc3")
+
+[node name="ScreenSubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+size = Vector2i(84, 48)
+render_target_update_mode = 4
+
+[node name="Snake2DGame" parent="ScreenSubViewport" instance=ExtResource("4_o7dsk")]

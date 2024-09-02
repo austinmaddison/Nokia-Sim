@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbdlqvc27dq1a"]
+
+[ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://scenes/sub_scenes/snake_2d_game.tscn" id="1_3xefp"]
+
+[node name="ScreenSubViewport" type="SubViewport"]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+size = Vector2i(84, 48)
+render_target_update_mode = 4
+
+[node name="Snake2DGame" parent="." instance=ExtResource("1_3xefp")]

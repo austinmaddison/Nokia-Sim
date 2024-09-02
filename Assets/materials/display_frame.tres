@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://tjxyo8y77dlg"]
+
+[ext_resource type="Texture2D" uid="uid://cann485t5iemq" path="res://Assets/model/nokia/tex/nokia_lcd_basecolor.png" id="1_m81yl"]
+[ext_resource type="Texture2D" uid="uid://bap6cnv8fm1bk" path="res://Assets/model/nokia/tex/nokia_lcd_metallic.png" id="2_qrv5d"]
+[ext_resource type="Texture2D" uid="uid://b6rd5ny2iydae" path="res://Assets/model/nokia/tex/nokia_lcd_fix_normals.png" id="3_304ng"]
+[ext_resource type="Texture2D" uid="uid://ddp12hr2oqiep" path="res://Assets/model/nokia/tex/nokia_lcd_roughness.png" id="4_jg2ee"]
+
+[resource]
+albedo_texture = ExtResource("1_m81yl")
+albedo_texture_force_srgb = true
+metallic = 1.0
+metallic_texture = ExtResource("2_qrv5d")
+roughness_texture = ExtResource("4_jg2ee")
+normal_enabled = true
+normal_texture = ExtResource("3_304ng")
+clearcoat_roughness = 1.0

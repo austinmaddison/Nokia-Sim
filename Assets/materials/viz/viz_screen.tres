@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c61q0ulkplngb"]
+
+[ext_resource type="Shader" path="res://Assets/shaders/viz/viz_screen.gdshader" id="1_6xef6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6xef6")
+shader_parameter/color = Color(0.0209997, 0.0274422, 0.00631651, 1)
+shader_parameter/pixels_x = 10.0
+shader_parameter/pixels_y = 10.0
+shader_parameter/cut = Vector4(0, 84, 0, 48)
+shader_parameter/cut_offset = Vector2(0, 0)
+shader_parameter/is_grid = true
+shader_parameter/is_cut = true

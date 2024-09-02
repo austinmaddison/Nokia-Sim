@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://mk743ljw75ic"]
+
+[ext_resource type="Shader" path="res://Assets/shaders/screen.gdshader" id="1_htxd0"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_htxd0")
+shader_parameter/backlight_diffuser_normals_strength = 1.0
+shader_parameter/top_coat_roughness_map_remap = Vector2(0, 0)
+shader_parameter/top_coat_roughness_strength = 1.0
+shader_parameter/shadow_color = Color(0, 0, 0, 0)
+shader_parameter/substrate_color = Color(0, 0, 0, 0)
+shader_parameter/backlight_color = Color(0, 0, 0, 0)
+shader_parameter/backlight_color_emmission_strength = 0.0
+shader_parameter/depth = 0.133
+shader_parameter/normal_depth = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic = 1.0
+shader_parameter/refractive_index = 1.805
+shader_parameter/pixels_x = 84.0
+shader_parameter/pixels_y = 48.0
+shader_parameter/bias = Vector2(0, 0)

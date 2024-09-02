@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnbw2tkpaid8t"]
+
+[ext_resource type="PackedScene" uid="uid://dbdlqvc27dq1a" path="res://scenes/screen_sub_viewport.tscn" id="1_jqest"]
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(84, 48)
+offset_right = 84.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScreenSubViewport" parent="." instance=ExtResource("1_jqest")]

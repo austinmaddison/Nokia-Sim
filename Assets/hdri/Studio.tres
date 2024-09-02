@@ -1,0 +1,6 @@
+[gd_resource type="PanoramaSkyMaterial" load_steps=2 format=3 uid="uid://bk0ahd5qv5evt"]
+
+[ext_resource type="Texture2D" uid="uid://vle0rn7vfq2v" path="res://Assets/hdri/christmas_photo_studio_07_4k.hdr" id="1_m5dox"]
+
+[resource]
+panorama = ExtResource("1_m5dox")

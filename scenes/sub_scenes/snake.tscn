@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bih8ji0vt67j3"]
+
+[ext_resource type="Script" path="res://scripts/snake/snake_movement.gd" id="1_s8pme"]
+[ext_resource type="Texture2D" uid="uid://ckgvdt7d1upq0" path="res://Assets/sprite/snake/headr.png" id="2_ln6gu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bime6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ln6gu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsufx"]
+size = Vector2(4, 4)
+
+[node name="Snake" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_s8pme")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bime6")
+frame_progress = 0.903614
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qsufx")

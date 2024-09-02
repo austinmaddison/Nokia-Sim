@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://crd7i62dg5ifa"]
+
+[ext_resource type="Texture2D" uid="uid://b84vysp4eag03" path="res://Assets/model/nokia/tex/wires/wire_thread_albedo.png" id="1_7dasf"]
+[ext_resource type="Texture2D" uid="uid://dqq24kfc0h6sf" path="res://Assets/model/nokia/tex/wires/wire_thread_normal.png" id="3_qni86"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.505
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_7dasf")
+metallic = 1.0
+metallic_specular = 0.49
+roughness = 0.16
+normal_enabled = true
+normal_texture = ExtResource("3_qni86")

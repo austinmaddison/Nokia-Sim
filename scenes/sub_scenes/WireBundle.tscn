@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://rj2kg6ofm80d"]
+
+[ext_resource type="PackedScene" uid="uid://ctqdwfs0gpvt1" path="res://Assets/model/nokia/wire_bundle.fbx" id="1_mv3yp"]
+[ext_resource type="Material" uid="uid://crd7i62dg5ifa" path="res://Assets/materials/wire_threads.tres" id="2_njbbg"]
+[ext_resource type="Material" uid="uid://egkbdkgym32y" path="res://Assets/materials/wires.tres" id="2_sdlv7"]
+
+[node name="WireBundle" instance=ExtResource("1_mv3yp")]
+
+[node name="Wires_1" parent="Wires" index="0"]
+surface_material_override/0 = ExtResource("2_njbbg")
+
+[node name="Wire_6_2" parent="Wires/Null_1/Subdivision_Surface/Connect/Wire_6" index="0"]
+gi_mode = 2
+surface_material_override/0 = ExtResource("2_sdlv7")
+
+[node name="Wire_6_4" parent="Wires/Null_1/Subdivision_Surface/Connect/Threads" index="0"]
+surface_material_override/0 = ExtResource("2_sdlv7")
+
+[node name="Wire_5_2" parent="Wires/Null_1/Subdivision_Surface/Connect/Threads_2" index="0"]
+surface_material_override/0 = ExtResource("2_sdlv7")
+
+[node name="Wire_5_4" parent="Wires/Null_1/Subdivision_Surface/Connect/Threads_3" index="0"]
+surface_material_override/0 = ExtResource("2_sdlv7")
+
+[node name="Wire_3_2" parent="Wires/Null_1/Subdivision_Surface/Connect/Threads_4" index="0"]
+surface_material_override/0 = ExtResource("2_sdlv7")
+
+[node name="Wire_2_2" parent="Wires/Null_1/Subdivision_Surface/Connect/Threads_5" index="0"]
+surface_material_override/0 = ExtResource("2_sdlv7")
+
+[node name="Wire_1_2" parent="Wires/Null_1/Subdivision_Surface/Connect/Threads_6" index="0"]
+surface_material_override/0 = ExtResource("2_sdlv7")
+
+[node name="Wire_2_3" parent="Wires/Null_1/Subdivision_Surface/Connect/Threads_7" index="0"]
+surface_material_override/0 = ExtResource("2_sdlv7")
