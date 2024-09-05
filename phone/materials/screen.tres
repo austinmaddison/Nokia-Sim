@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://mk743ljw75ic"]
 
-[ext_resource type="Shader" path="res://Assets/shaders/screen.gdshader" id="1_htxd0"]
+[ext_resource type="Shader" path="res://phone/shaders/screen.gdshader" id="1_htxd0"]
 
 [resource]
 resource_local_to_scene = true

@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3lcn3pl5unre"]
+[gd_scene load_steps=10 format=3 uid="uid://d3lcn3pl5unre"]
 
-[ext_resource type="Shader" path="res://Assets/shaders/screen.gdshader" id="1_i0o1o"]
+[ext_resource type="Shader" path="res://phone/shaders/screen.gdshader" id="1_i0o1o"]
 [ext_resource type="PackedScene" uid="uid://dkaksmr0udxi7" path="res://scenes/sub_scenes/NokiaLcdFrame.tscn" id="2_2j4qq"]
 [ext_resource type="PackedScene" uid="uid://rj2kg6ofm80d" path="res://scenes/sub_scenes/WireBundle.tscn" id="3_kji6u"]
-[ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://scenes/sub_scenes/snake_2d_game.tscn" id="4_o7dsk"]
+[ext_resource type="Script" path="res://scenes/PassInput.gd" id="4_4pyw4"]
+[ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://snake_game/snake_2d_game.tscn" id="4_o7dsk"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wv7px"]
-viewport_path = NodePath("ScreenSubViewport")
+viewport_path = NodePath("Node2D/ScreenSubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d40g5"]
 resource_local_to_scene = true
@@ -78,30 +79,6 @@ far = 500.0
 
 [node name="Lights" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0854486, 1.66002, 1.38673)
-visible = false
-light_energy = 0.007
-light_specular = 0.065
-omni_range = 4.626
-omni_attenuation = -0.308
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.882839, 2.41925, 0.641454)
-visible = false
-light_energy = 0.1
-light_specular = 0.699
-omni_range = 1.671
-omni_attenuation = -0.308
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21158, 2.42732, 0.99243)
-visible = false
-light_energy = 0.1
-light_specular = 0.699
-omni_range = 2.27492
-omni_attenuation = -0.308
-
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0673694, 2.23993, 0.135837)
 light_energy = 0.1
@@ -109,22 +86,6 @@ light_negative = true
 light_specular = 0.026
 omni_range = 0.997
 omni_attenuation = 0.13
-
-[node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350144, 1.54605, -0.0588245)
-visible = false
-light_energy = 0.1
-light_negative = true
-light_specular = 0.026
-omni_range = 0.527169
-
-[node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.447834, 1.54605, -0.0510308)
-visible = false
-light_energy = 0.1
-light_negative = true
-light_specular = 0.026
-omni_range = 0.527169
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(0.807205, -0.492159, -0.325883, 0.545822, 0.412172, 0.729515, -0.224718, -0.766743, 0.601338, -1.57093, 3.3759, 2.36656)
@@ -157,11 +118,16 @@ ambient_color_energy = 0.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_71wc3")
 
-[node name="ScreenSubViewport" type="SubViewport" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("4_4pyw4")
+
+[node name="ScreenSubViewport" type="SubViewport" parent="Node2D"]
 unique_name_in_owner = true
+process_mode = 3
+process_priority = 1
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 size = Vector2i(84, 48)
 render_target_update_mode = 4
 
-[node name="Snake2DGame" parent="ScreenSubViewport" instance=ExtResource("4_o7dsk")]
+[node name="Snake2DGame" parent="Node2D/ScreenSubViewport" instance=ExtResource("4_o7dsk")]

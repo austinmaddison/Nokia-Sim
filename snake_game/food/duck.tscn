@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccaf3ptbdagdp"]
+
+[ext_resource type="Script" path="res://snake_game/snake_food.gd" id="1_42mxb"]
+[ext_resource type="Texture2D" uid="uid://dn2x0ur0lme74" path="res://snake_game/food/sprites/food0.png" id="2_3eqal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukgjg"]
+size = Vector2(8, 4)
+
+[node name="Duck" type="Area2D"]
+script = ExtResource("1_42mxb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3eqal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ukgjg")

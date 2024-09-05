@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbdlqvc27dq1a"]
 
-[ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://scenes/sub_scenes/snake_2d_game.tscn" id="1_3xefp"]
+[ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://snake_game/snake_2d_game.tscn" id="1_3xefp"]
 
 [node name="ScreenSubViewport" type="SubViewport"]
 handle_input_locally = false

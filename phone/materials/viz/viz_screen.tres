@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c61q0ulkplngb"]
 
-[ext_resource type="Shader" path="res://Assets/shaders/viz/viz_screen.gdshader" id="1_6xef6"]
+[ext_resource type="Shader" path="res://phone/shaders/viz/viz_screen.gdshader" id="1_6xef6"]
 
 [resource]
 render_priority = 0

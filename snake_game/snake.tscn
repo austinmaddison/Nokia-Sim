@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcpt2h1jor1st"]
+
+[ext_resource type="Script" path="res://snake_game/snake.gd" id="1_dqfny"]
+[ext_resource type="PackedScene" uid="uid://bih8ji0vt67j3" path="res://snake_game/snake_node.tscn" id="2_psdf1"]
+
+[node name="Snake" type="Node2D"]
+script = ExtResource("1_dqfny")
+snake_node_scene = ExtResource("2_psdf1")

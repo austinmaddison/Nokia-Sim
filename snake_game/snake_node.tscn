@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bih8ji0vt67j3"]
+
+[ext_resource type="Script" path="res://snake_game/snake_node.gd" id="1_6sjm0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1l4gx"]
+blend_mode = 1
+
+[node name="SnakeNode" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_6sjm0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_1l4gx")
+position = Vector2(2, 2)

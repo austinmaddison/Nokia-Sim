@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkaksmr0udxi7"]
 
 [ext_resource type="PackedScene" uid="uid://cwtd8yqx8evwl" path="res://Assets/model/nokia/nokia_lcd_frame.fbx" id="1_8l16n"]
-[ext_resource type="Material" uid="uid://tjxyo8y77dlg" path="res://Assets/materials/display_frame.tres" id="2_qv48q"]
+[ext_resource type="Material" uid="uid://tjxyo8y77dlg" path="res://phone/materials/display_frame.tres" id="2_qv48q"]
 
 [node name="LP" instance=ExtResource("1_8l16n")]
 

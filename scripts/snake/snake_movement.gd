@@ -1,6 +1,5 @@
 extends Area2D
 
-@export var parent_viewport_name = "ScreenSubViewport"
 @export var speed: float = 2
 
 const block_size = 4  # 4x4 pixels
@@ -16,15 +15,6 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
-	if Input.is_action_pressed('up'):
-		direction = Vector2.UP
-	if Input.is_action_pressed('down'):
-		direction = Vector2.DOWN
-	if Input.is_action_pressed('left'):
-		direction = Vector2.LEFT
-	if Input.is_action_pressed('right'):
-		direction = Vector2.RIGHT
 	
 	if time_elapsed >= 1 * 1/speed:
 		time_elapsed = 0
@@ -33,7 +23,16 @@ func _process(delta: float) -> void:
 	else:
 		time_elapsed += delta
 
-
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed('up'):
+		direction = Vector2.UP
+	if event.is_action_pressed('down'):
+		direction = Vector2.DOWN
+	if event.is_action_pressed('left'):
+		direction = Vector2.LEFT
+	if event.is_action_pressed('right'):
+		direction = Vector2.RIGHT
+	
 
 func _wrap_position(pos: Vector2) -> Vector2:
 	var pos_new = pos

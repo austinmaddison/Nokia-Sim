@@ -21,6 +21,10 @@ config/icon="res://Assets/sprite/icon/icon.png"
 Draw3D="*res://scripts/viz/Draw3D.gd"
 MidiController="*res://scripts/viz/MidiController.gd"
 
+[display]
+
+window/stretch/aspect="keep_width"
+
 [dotnet]
 
 project/assembly_name="Snake"
@@ -61,3 +65,4 @@ anti_aliasing/screen_space_roughness_limiter/enabled=false
 anti_aliasing/quality/msaa_2d=3
 anti_aliasing/quality/msaa_3d=1
 anti_aliasing/quality/use_taa=true
+2d/snap/snap_2d_transforms_to_pixel=true
