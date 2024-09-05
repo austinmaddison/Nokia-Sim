@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://clxc0vm86pis"]
+[gd_scene load_steps=7 format=3 uid="uid://clxc0vm86pis"]
 
 [ext_resource type="PackedScene" uid="uid://bcpt2h1jor1st" path="res://snake_game/snake.tscn" id="1_8jpkb"]
 [ext_resource type="Texture2D" uid="uid://qt3v8dbwe3ma" path="res://Assets/sprite/border/border.png" id="2_qcx8u"]
+[ext_resource type="Texture2D" uid="uid://bl2ueshdxduqq" path="res://snake_game/numbers/underline.png" id="2_v870u"]
+[ext_resource type="Texture2D" uid="uid://b4mjxi62x81qx" path="res://snake_game/numbers/0.png" id="4_rmkg1"]
+[ext_resource type="Texture2D" uid="uid://dn2x0ur0lme74" path="res://snake_game/food/sprites/food0.png" id="5_cjg44"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qog7k"]
 blend_mode = 1
@@ -14,14 +17,51 @@ offset_right = 84.0
 offset_bottom = 48.0
 color = Color(0, 0, 0, 1)
 
-[node name="Border" type="Area2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Border"]
+[node name="Border" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_qog7k")
 texture = ExtResource("2_qcx8u")
 centered = false
 offset = Vector2(0, 8)
 
+[node name="Underline" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = ExtResource("2_v870u")
+centered = false
+
 [node name="Snake" parent="." instance=ExtResource("1_8jpkb")]
 position = Vector2(40, 28)
 speed = 4.0
+
+[node name="Score" type="Node2D" parent="."]
+
+[node name="0" type="Sprite2D" parent="Score"]
+position = Vector2(1, 0)
+texture = ExtResource("4_rmkg1")
+offset = Vector2(1.655, 2)
+
+[node name="1" type="Sprite2D" parent="Score"]
+position = Vector2(6, 2)
+texture = ExtResource("4_rmkg1")
+
+[node name="2" type="Sprite2D" parent="Score"]
+position = Vector2(10, 2)
+texture = ExtResource("4_rmkg1")
+
+[node name="3" type="Sprite2D" parent="Score"]
+position = Vector2(14, 2)
+texture = ExtResource("4_rmkg1")
+
+[node name="AnimalScore" type="Node2D" parent="."]
+position = Vector2(84, 0)
+
+[node name="0" type="Sprite2D" parent="AnimalScore"]
+position = Vector2(-7, 2)
+texture = ExtResource("4_rmkg1")
+
+[node name="1" type="Sprite2D" parent="AnimalScore"]
+position = Vector2(-3, 2)
+texture = ExtResource("4_rmkg1")
+
+[node name="Animalcon" type="Sprite2D" parent="AnimalScore"]
+position = Vector2(-13, 3)
+texture = ExtResource("5_cjg44")

@@ -1,36 +1,50 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3lcn3pl5unre"]
+[gd_scene load_steps=12 format=3 uid="uid://d3lcn3pl5unre"]
 
 [ext_resource type="Shader" path="res://phone/shaders/screen.gdshader" id="1_i0o1o"]
 [ext_resource type="PackedScene" uid="uid://dkaksmr0udxi7" path="res://scenes/sub_scenes/NokiaLcdFrame.tscn" id="2_2j4qq"]
+[ext_resource type="Texture2D" uid="uid://1fhcy5furke8" path="res://phone/shaders/bluenoise.png" id="2_vg2bd"]
+[ext_resource type="Texture2D" uid="uid://w828dlcnx7cw" path="res://phone/shaders/bluenoise_normal.png" id="3_0scn8"]
 [ext_resource type="PackedScene" uid="uid://rj2kg6ofm80d" path="res://scenes/sub_scenes/WireBundle.tscn" id="3_kji6u"]
 [ext_resource type="Script" path="res://scenes/PassInput.gd" id="4_4pyw4"]
 [ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://snake_game/snake_2d_game.tscn" id="4_o7dsk"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wv7px"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_crv42"]
 viewport_path = NodePath("Node2D/ScreenSubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d40g5"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_i0o1o")
-shader_parameter/backlight_diffuser_normals_strength = 1.0
+shader_parameter/scale_texture = Vector2(1.18, 1.17)
+shader_parameter/translate_texture = Vector2(0, 0)
+shader_parameter/backlight_diffuser_noise_strength = -3.53
 shader_parameter/top_coat_roughness_map_remap = Vector2(0, 0)
 shader_parameter/top_coat_roughness_strength = 1.0
-shader_parameter/shadow_color = Color(0.14, 0.14, 0.14, 1)
-shader_parameter/substrate_color = Color(1, 1, 1, 1)
+shader_parameter/substrate_color = Color(0.1681, 0.0979625, 0.0146781, 1)
+shader_parameter/background_color = Color(0.66, 0.6501, 0.363, 1)
+shader_parameter/fade_color = Color(0, 0, 0, 0)
+shader_parameter/fade_falloff = 0.55
+shader_parameter/shadow_color = Color(0.199, 0.12, 0.049, 0.313)
 shader_parameter/backlight_color = Color(0, 0, 0, 0)
 shader_parameter/backlight_color_emmission_strength = 0.0
-shader_parameter/depth = 0.133
-shader_parameter/normal_depth = 1.0
-shader_parameter/roughness = 0.054
-shader_parameter/metallic = 0.591
+shader_parameter/depth = 0.167
+shader_parameter/normal_depth = 2.055
+shader_parameter/specular = 0.665
+shader_parameter/roughness = 0.423
+shader_parameter/clear_coat_specular = 0.3
+shader_parameter/clear_coat_roughness = 0.35
+shader_parameter/metallic = 0.0
 shader_parameter/refractive_index = 1.805
-shader_parameter/pixels_x = 84.0
-shader_parameter/pixels_y = 48.0
-shader_parameter/bias = Vector2(0, 0)
-shader_parameter/bitmap_texture = SubResource("ViewportTexture_wv7px")
+shader_parameter/screen_width = 84.0
+shader_parameter/screen_height = 48.0
+shader_parameter/bias = Vector2(0, 0.021)
+shader_parameter/viewport_texture = SubResource("ViewportTexture_crv42")
+shader_parameter/backlight_diffuser_noise = ExtResource("2_vg2bd")
+shader_parameter/backlight_diffuser_normal = ExtResource("3_0scn8")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fnms0"]
+lightmap_size_hint = Vector2i(12, 12)
+uv2_padding = 0.0
 
 [sub_resource type="Environment" id="Environment_71wc3"]
 background_mode = 1
@@ -60,22 +74,17 @@ adjustment_contrast = 0.95
 [node name="Phone" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
-[node name="ScreenQuad" type="MeshInstance3D" parent="Phone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.57, 0, 0, 0)
+[node name="SubViewportQuad" type="MeshInstance3D" parent="Phone"]
+transform = Transform3D(1.14666, 0, 0, 0, 1, 0, 0, 0, 0.75048, 0, -5.55112e-17, 0.0155329)
 material_override = SubResource("ShaderMaterial_d40g5")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("PlaneMesh_fnms0")
 
 [node name="DisplayFrame" parent="Phone" instance=ExtResource("2_2j4qq")]
-transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 0, 0)
+transform = Transform3D(0.634387, 0, 0, 0, 0.634387, -1.77636e-15, 0, 1.77636e-15, 0.634387, 0, -1.93547e-16, -0.0417808)
 
 [node name="WireBundle" parent="Phone/DisplayFrame" instance=ExtResource("3_kji6u")]
-
-[node name="MainCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.924191, 0, 0, 0, 0.924191, 0, 0, 0, 0.924191, 0, 0, 7.02885)
-fov = 15.4
-far = 500.0
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -127,7 +136,14 @@ process_mode = 3
 process_priority = 1
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 0
 size = Vector2i(84, 48)
 render_target_update_mode = 4
 
 [node name="Snake2DGame" parent="Node2D/ScreenSubViewport" instance=ExtResource("4_o7dsk")]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MainCamera" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.144)
+far = 500.0
