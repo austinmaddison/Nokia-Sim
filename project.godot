@@ -23,6 +23,9 @@ MidiController="*res://scripts/viz/MidiController.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
 window/stretch/aspect="keep_width"
 
 [dotnet]
@@ -59,6 +62,8 @@ right={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+gl_compatibility/nvidia_disable_threaded_optimization=false
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
 reflections/sky_reflections/ggx_samples=64
 reflections/sky_reflections/fast_filter_high_quality=true
 anti_aliasing/quality/msaa_2d=1
