@@ -1,58 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://d3lcn3pl5unre"]
+[gd_scene load_steps=21 format=3 uid="uid://d3lcn3pl5unre"]
 
 [ext_resource type="Shader" path="res://phone/shaders/screen.gdshader" id="1_i0o1o"]
 [ext_resource type="PackedScene" uid="uid://dkaksmr0udxi7" path="res://scenes/sub_scenes/NokiaLcdFrame.tscn" id="2_2j4qq"]
-[ext_resource type="Texture2D" uid="uid://1fhcy5furke8" path="res://phone/shaders/bluenoise.png" id="2_vg2bd"]
-[ext_resource type="Texture2D" uid="uid://cgu4hvr00k441" path="res://phone/shaders/shadow.png" id="3_2gidx"]
 [ext_resource type="PackedScene" uid="uid://rj2kg6ofm80d" path="res://scenes/sub_scenes/WireBundle.tscn" id="3_kji6u"]
-[ext_resource type="Texture2D" uid="uid://dpab000leylk5" path="res://phone/shaders/screen_normal.png" id="3_viqco"]
 [ext_resource type="Script" path="res://scenes/PassInput.gd" id="4_4pyw4"]
-[ext_resource type="Texture2D" uid="uid://coeis2qh0anfb" path="res://phone/shaders/backlight.png" id="4_l36vs"]
 [ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://snake_game/snake_2d_game.tscn" id="4_o7dsk"]
 [ext_resource type="Material" uid="uid://bk0ahd5qv5evt" path="res://Assets/hdri/Studio.tres" id="5_6m5d4"]
 [ext_resource type="Script" path="res://scenes/vibrate.gd" id="11_2udeo"]
 [ext_resource type="Texture2D" uid="uid://b6s35khtfxo3e" path="res://phone/shaders/dust.png" id="11_a4frc"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_crv42"]
-viewport_path = NodePath("Node2D/ScreenSubViewport")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d40g5"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_i0o1o")
-shader_parameter/scale_texture = Vector2(1.199, 1.216)
-shader_parameter/translate_texture = Vector2(0, 0)
-shader_parameter/back_color = Color(0.59, 0.586067, 0.354, 1)
-shader_parameter/back_noise_scale = 1.0
-shader_parameter/back_roughness_remap = Vector2(-0.165, 1.575)
-shader_parameter/substrate_color = Color(0.1681, 0.0979625, 0.0146781, 1)
-shader_parameter/substrate_shadow_color = Color(0.17709, 0.18, 0.0054, 0.396078)
-shader_parameter/fade_color = Color(0, 0, 0, 1)
-shader_parameter/fade_falloff = 0.42
-shader_parameter/frame_shadow_color = Color(0, 0, 0, 0.788235)
-shader_parameter/enable_backlight = false
-shader_parameter/backlight_remap = Vector2(-0.085, 0.68)
-shader_parameter/backlight_color = Color(0.171, 0.38, 0, 1)
-shader_parameter/backlight_emmission_strength = 0.5
-shader_parameter/backlight_edge_bleed_strength = 0.072
-shader_parameter/backlight_bleed_strength = 0.023
-shader_parameter/depth = 0.104
-shader_parameter/normal_depth = 1.0
-shader_parameter/specular = 1.0
-shader_parameter/clear_coat_normal_depth = 0.315
-shader_parameter/clear_coat_dirt_color = Color(0.252027, 0.26, 0.1404, 0.690196)
-shader_parameter/clear_coat_dirt_remap = Vector2(0.005, 1.295)
-shader_parameter/clear_coat_specular = 1.0
-shader_parameter/clear_coat_roughness_remap = Vector2(-0.26, 1.105)
-shader_parameter/screen_width = 84.0
-shader_parameter/screen_height = 48.0
-shader_parameter/bias = Vector2(0, 0.007)
-shader_parameter/viewport_texture = SubResource("ViewportTexture_crv42")
-shader_parameter/back_noise = ExtResource("2_vg2bd")
-shader_parameter/frame_shadow_map = ExtResource("3_2gidx")
-shader_parameter/backlight_map = ExtResource("4_l36vs")
-shader_parameter/clear_coat_roughness_map = ExtResource("4_l36vs")
-shader_parameter/clear_coat_normal_map = ExtResource("3_viqco")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fnms0"]
 lightmap_size_hint = Vector2i(12, 12)
@@ -155,15 +115,11 @@ size = Vector2(0.05, 0.05)
 [node name="Phone" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
-[node name="SubViewportQuad" type="MeshInstance3D" parent="Phone"]
+[node name="ScreenLight" type="Node3D" parent="Phone"]
 transform = Transform3D(1.14425, 0, 0, 0, 0.997895, 3.55271e-15, 0, 0, 0.7489, 0, 0.049, 0.016)
-layers = 2
-material_override = SubResource("ShaderMaterial_d40g5")
-cast_shadow = 0
-gi_mode = 0
-mesh = SubResource("PlaneMesh_fnms0")
+visible = false
 
-[node name="Detail" type="OmniLight3D" parent="Phone/SubViewportQuad"]
+[node name="Detail" type="OmniLight3D" parent="Phone/ScreenLight"]
 transform = Transform3D(0.873935, 0, 0, 0, 1.00211, 0, 0, 0, 1.33529, -0.385487, 0.271877, -0.0221772)
 light_color = Color(0.301961, 0.560784, 0.12549, 1)
 light_energy = 0.092
@@ -173,7 +129,7 @@ light_specular = 0.1
 light_cull_mask = 4294967293
 omni_range = 1.873
 
-[node name="Detail2" type="OmniLight3D" parent="Phone/SubViewportQuad"]
+[node name="Detail2" type="OmniLight3D" parent="Phone/ScreenLight"]
 transform = Transform3D(0.873935, 0, 0, 0, 1.00211, 0, 0, 0, 1.33529, 0.357855, 0.271877, -0.0221772)
 light_color = Color(0.301961, 0.560784, 0.12549, 1)
 light_energy = 0.092
@@ -183,7 +139,7 @@ light_specular = 0.1
 light_cull_mask = 4294967293
 omni_range = 1.873
 
-[node name="Volumetric" type="SpotLight3D" parent="Phone/SubViewportQuad"]
+[node name="Volumetric" type="SpotLight3D" parent="Phone/ScreenLight"]
 transform = Transform3D(0.873935, 0, 0, 0, 4.38036e-08, -1.00211, 0, -1.33529, -5.83674e-08, 0, 0.0711128, -3.72529e-09)
 layers = 2
 light_color = Color(0.3366, 0.45, 0.072, 1)
@@ -193,6 +149,14 @@ spot_range = 1.352
 spot_attenuation = 1.4
 spot_angle = 90.0
 spot_angle_attenuation = 0.000667014
+
+[node name="SubViewportQuad" type="MeshInstance3D" parent="Phone"]
+transform = Transform3D(1.14425, 0, 0, 0, 0.997895, 3.55271e-15, 0, 0, 0.7489, 0, 0.049, 0.016)
+layers = 2
+material_override = SubResource("ShaderMaterial_d40g5")
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("PlaneMesh_fnms0")
 
 [node name="DisplayFrame" parent="Phone" instance=ExtResource("2_2j4qq")]
 transform = Transform3D(0.634387, 0, 0, 0, 0.634387, -1.77636e-15, 0, 1.77636e-15, 0.634387, 0, -1.93547e-16, -0.0417808)

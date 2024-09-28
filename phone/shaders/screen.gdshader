@@ -47,9 +47,9 @@ uniform vec2 bias = vec2(0.0, 0.0);
 varying vec3 ro;
 varying vec3 p;
 varying vec3 vertex_normal_ws;
+
 void vertex()
 {
-
 	p = ((MODEL_MATRIX)*vec4(VERTEX,1.0)).xyz;// Get fragment position in world space coordinates
 	vertex_normal_ws = ((MODEL_MATRIX)*vec4(NORMAL,1.0)).xyz;
 }

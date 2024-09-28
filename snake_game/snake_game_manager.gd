@@ -1,8 +1,13 @@
 extends Node
 
+signal toggle_pause_update
+signal update_once
+
+@onready var snake: Snake = $Snake
+
+
 var points
-var snake: Snake
-var food: Array[Food]
+var food: Array[SnakeFood]
 
 
 # Called when the node enters the scene tree for the first time.

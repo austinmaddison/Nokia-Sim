@@ -1,29 +1,35 @@
 class_name Snake extends Node2D
 
+signal toggle_pause_update
+signal update_once
+signal ate_food
+
 @export var snake_node_scene: PackedScene
 @export var start_length: int = 5 
 @export var tail_direction: Vector2 = Vector2.LEFT
 
-@export var speed: float = 2:
+@export var speed: float = 0.5:
 	set(new_speed):
 		speed = new_speed
-
 
 const snake_node_size = 4  # 4px
 const border = Vector4(0, 84, 8, 48)
 
-var head
-var tail
+var head : Area2D
+var tail : Area2D
 
 var direction: Vector2 = tail_direction * -1
 var queued_direction = direction
 var update_timer: Timer
-var wrap_border: Vector4
+@export var wrap_border: Vector4 = Vector4(1+1, 9-2, 83-1, 33) # left, top, right, bottom
 
 var is_infront_food = false
 var is_full: bool = false
 
 func _ready() -> void:
+	toggle_pause_update.connect(func(): update_timer.paused = !update_timer.paused)
+	update_once.connect(_update)
+	
 	update_timer = Timer.new()
 	add_sibling.call_deferred(update_timer)
 	update_timer.autostart = true
@@ -31,6 +37,14 @@ func _ready() -> void:
 	_update_speed(speed)
 	
 	_create_snake()
+	
+
+func _input(event: InputEvent) -> void:
+	if Input.is_key_pressed(KEY_0):
+		toggle_pause_update.emit()
+	if Input.is_key_pressed(KEY_1):
+		update_once.emit()
+
 
 func _update_speed(speed):
 	update_timer.wait_time = 1/speed
@@ -67,7 +81,9 @@ func _update_direction():
 	
 func _recursivley_update_nodes():
 	_recursivley_update_nodes_position_helper(head)
-	head.position += direction * snake_node_size
+	var new_pos = head.global_position + direction * snake_node_size
+	head.global_position = _wrap_position(head.global_position + direction * snake_node_size)
+	print("POS:", head.position)
 	head.direction = direction
 	_recursivley_update_nodes_sprite_helper(tail)
 
@@ -98,23 +114,27 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _wrap_position(pos: Vector2) -> Vector2:
 	var pos_new = pos
+	var x_start = wrap_border.x
+	var x_end = wrap_border.z
+	var y_start = wrap_border.y
+	var y_end = wrap_border.w
 	
-	## left
-	#if pos.x < wrap_border.x:
-		#pos_new.x = wrap_border.y - 1
-	##right
-	#if pos.x > wrap_border.y:
-		#pos_new.x = wrap_border.x + 1
-	#
-	## top
-	#if pos.y < wrap_border.z + 1:
-		#pos_new.y = wrap_border.w - snake_node_size/2 + 1
-	## bottom
-	#if pos.y > wrap_border.w - 1:
-		#pos_new.y = wrap_border.z + snake_node_size/2 
+	# left
+	if pos.x < x_start:
+		pos_new.x = x_end - 1
+	#right
+	if pos.x >= x_end:
+		pos_new.x = x_start
+	# top
+	if pos.y < y_start + 2:
+		pos_new.y = y_end - 4
+	# bottom
+	if pos.y >= y_end - 1:
+		pos_new.y = y_start + 4
 		
 	return pos_new
-		
+	
+
 func _get_sprite(node):
 	if node.prev == null: # is head
 		if is_infront_food:

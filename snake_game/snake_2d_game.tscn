@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://clxc0vm86pis"]
+[gd_scene load_steps=8 format=3 uid="uid://clxc0vm86pis"]
 
 [ext_resource type="PackedScene" uid="uid://bcpt2h1jor1st" path="res://snake_game/snake.tscn" id="1_8jpkb"]
+[ext_resource type="Script" path="res://snake_game/snake_game_manager.gd" id="1_w0m5n"]
 [ext_resource type="Texture2D" uid="uid://qt3v8dbwe3ma" path="res://Assets/sprite/border/border.png" id="2_qcx8u"]
 [ext_resource type="Texture2D" uid="uid://bl2ueshdxduqq" path="res://snake_game/numbers/underline.png" id="2_v870u"]
 [ext_resource type="Texture2D" uid="uid://b4mjxi62x81qx" path="res://snake_game/numbers/0.png" id="4_rmkg1"]
@@ -11,6 +12,7 @@ blend_mode = 1
 
 [node name="Snake2DGame" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_w0m5n")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 84.0
@@ -29,7 +31,8 @@ texture = ExtResource("2_v870u")
 centered = false
 
 [node name="Snake" parent="." instance=ExtResource("1_8jpkb")]
-position = Vector2(40, 28)
+position = Vector2(40, 10)
+start_length = 8
 speed = 4.0
 
 [node name="Score" type="Node2D" parent="."]
