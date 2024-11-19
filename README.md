@@ -1,5 +1,8 @@
 # Nokia Simulator (Work In Progress)
 
+
+snake has no collison 😝, will continue work after my uni term is over
+
 ![Nokia](https://github.com/user-attachments/assets/e9b00e20-6c5d-4876-819e-2aaeb3cdd695)
 
 This project's inital goal was just to try out **Godot 4.3**. 
