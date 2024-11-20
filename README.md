@@ -10,7 +10,16 @@ I wanted to see how far I could push visual fidelity and its shader system.
 Chose a classic game to reimplement, Nokia's original Snake.
 
 Current features
-- A failtful nokia dev LCD. 
+* A failtful nokia dev LCD module model and shader. 
+    * LCD Shader
+        * Substrate Parralax Shadows/Ghosting
+        * 2D Viewport Substrate
+        * Backlight Diffuser Sparkles
+        * Backlight
+        * Fake Frame Shadows
+        * Top Panel Imprefections - Scratches, Smear and Subtle Dirt
+*
+
 - Snake Game (Snake movement and placeholders so far.)
 
 
