@@ -17,7 +17,7 @@ Current features
         * Backlight Diffuser Sparkles
         * Backlight
         * Fake Frame Shadows
-        * Top Panel Imprefections - Scratches, Smear and Subtle Dirt
+        * Top Layer Specular and Color Imprefections - Scratches, Smear and Subtle Dirt
 *
 
 - Snake Game (Snake movement and placeholders so far.)
