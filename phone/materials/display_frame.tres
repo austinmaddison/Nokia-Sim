@@ -9,8 +9,11 @@
 albedo_texture = ExtResource("1_m81yl")
 albedo_texture_force_srgb = true
 metallic = 1.0
+metallic_specular = 0.44
 metallic_texture = ExtResource("2_qrv5d")
 roughness_texture = ExtResource("4_jg2ee")
 normal_enabled = true
 normal_texture = ExtResource("3_304ng")
 clearcoat_roughness = 1.0
+ao_enabled = true
+heightmap_scale = 6.525

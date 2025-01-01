@@ -1,0 +1,49 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://bup4nux2twpee"]
+
+[ext_resource type="Shader" path="res://phone/shaders/screen.gdshader" id="1_4lyck"]
+[ext_resource type="Texture2D" uid="uid://1fhcy5furke8" path="res://phone/shaders/bluenoise.png" id="2_i7qr3"]
+[ext_resource type="Texture2D" uid="uid://coeis2qh0anfb" path="res://phone/shaders/backlight.png" id="3_fspmp"]
+[ext_resource type="Texture2D" uid="uid://dpab000leylk5" path="res://phone/shaders/screen_normal.png" id="4_g0ej6"]
+[ext_resource type="Texture2D" uid="uid://iris58gp5w0k" path="res://phone/shaders/screen_roughness.png" id="5_ofids"]
+[ext_resource type="Texture2D" uid="uid://cgu4hvr00k441" path="res://phone/shaders/shadow.png" id="6_b1l6o"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vjw1k"]
+viewport_path = NodePath("Node2D/ScreenSubViewport")
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_4lyck")
+shader_parameter/scale_texture = Vector2(1.199, 1.216)
+shader_parameter/translate_texture = Vector2(0, 0)
+shader_parameter/back_color = Color(0.584314, 0.580392, 0.34902, 1)
+shader_parameter/back_noise_scale = 1.0
+shader_parameter/back_roughness_remap = Vector2(-0.165, 1.575)
+shader_parameter/substrate_color = Color(0.164706, 0.0941176, 0.0117647, 1)
+shader_parameter/substrate_shadow_color = Color(0.3, 0.2814, 0.114, 0.607843)
+shader_parameter/fade_color = Color(0, 0, 0, 1)
+shader_parameter/fade_falloff = 0.325
+shader_parameter/frame_shadow_color = Color(0, 0, 0, 0.65098)
+shader_parameter/enable_backlight = false
+shader_parameter/backlight_remap = Vector2(0, 1)
+shader_parameter/backlight_color = Color(0, 0, 0, 0)
+shader_parameter/backlight_emmission_strength = 0.0
+shader_parameter/backlight_edge_bleed_strength = 0.0
+shader_parameter/backlight_bleed_strength = 0.0
+shader_parameter/depth = 0.104
+shader_parameter/normal_depth = 1.0
+shader_parameter/specular = 1.0
+shader_parameter/clear_coat_normal_depth = 0.315
+shader_parameter/clear_coat_dirt_color = Color(0, 0, 0, 0)
+shader_parameter/clear_coat_dirt_remap = Vector2(0.005, 1.295)
+shader_parameter/clear_coat_specular = 1.0
+shader_parameter/clear_coat_roughness_remap = Vector2(0, 0.2)
+shader_parameter/screen_width = 84.0
+shader_parameter/screen_height = 48.0
+shader_parameter/bias = Vector2(-0.001, 0.005)
+shader_parameter/viewport_texture = SubResource("ViewportTexture_vjw1k")
+shader_parameter/back_noise = ExtResource("2_i7qr3")
+shader_parameter/frame_shadow_map = ExtResource("6_b1l6o")
+shader_parameter/backlight_map = ExtResource("3_fspmp")
+shader_parameter/clear_coat_roughness_map = ExtResource("5_ofids")
+shader_parameter/clear_coat_normal_map = ExtResource("4_g0ej6")

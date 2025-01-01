@@ -1,18 +1,14 @@
 [gd_scene load_steps=21 format=3 uid="uid://d3lcn3pl5unre"]
 
-[ext_resource type="Shader" path="res://phone/shaders/screen.gdshader" id="1_i0o1o"]
+[ext_resource type="Script" path="res://scenes/rotate.gd" id="1_xcwv4"]
 [ext_resource type="PackedScene" uid="uid://dkaksmr0udxi7" path="res://scenes/sub_scenes/NokiaLcdFrame.tscn" id="2_2j4qq"]
+[ext_resource type="Material" uid="uid://bup4nux2twpee" path="res://Assets/Model/Nokia/screen.tres" id="2_d7uvu"]
 [ext_resource type="PackedScene" uid="uid://rj2kg6ofm80d" path="res://scenes/sub_scenes/WireBundle.tscn" id="3_kji6u"]
 [ext_resource type="Script" path="res://scenes/PassInput.gd" id="4_4pyw4"]
 [ext_resource type="PackedScene" uid="uid://clxc0vm86pis" path="res://snake_game/snake_2d_game.tscn" id="4_o7dsk"]
 [ext_resource type="Material" uid="uid://bk0ahd5qv5evt" path="res://Assets/hdri/Studio.tres" id="5_6m5d4"]
 [ext_resource type="Script" path="res://scenes/vibrate.gd" id="11_2udeo"]
 [ext_resource type="Texture2D" uid="uid://b6s35khtfxo3e" path="res://phone/shaders/dust.png" id="11_a4frc"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d40g5"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("1_i0o1o")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fnms0"]
 lightmap_size_hint = Vector2i(12, 12)
@@ -29,6 +25,7 @@ sky_rotation = Vector3(0, -3.03164, 0)
 ambient_light_source = 2
 ambient_light_energy = 16.0
 tonemap_mode = 2
+ssr_enabled = true
 ssr_max_steps = 67
 ssr_fade_in = 0.14489
 ssr_fade_out = 1.68179
@@ -114,6 +111,7 @@ size = Vector2(0.05, 0.05)
 
 [node name="Phone" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_xcwv4")
 
 [node name="ScreenLight" type="Node3D" parent="Phone"]
 transform = Transform3D(1.14425, 0, 0, 0, 0.997895, 3.55271e-15, 0, 0, 0.7489, 0, 0.049, 0.016)
@@ -153,7 +151,7 @@ spot_angle_attenuation = 0.000667014
 [node name="SubViewportQuad" type="MeshInstance3D" parent="Phone"]
 transform = Transform3D(1.14425, 0, 0, 0, 0.997895, 3.55271e-15, 0, 0, 0.7489, 0, 0.049, 0.016)
 layers = 2
-material_override = SubResource("ShaderMaterial_d40g5")
+material_override = ExtResource("2_d7uvu")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("PlaneMesh_fnms0")
@@ -200,6 +198,7 @@ spot_angle_attenuation = 4.14105
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53981, 0.0125247, 0.387832)
+visible = false
 size = Vector3(7.14893, 10.1038, 12.3232)
 origin_offset = Vector3(0.542969, 0.166016, -1.09424)
 ambient_color = Color(0.519426, 0.519426, 0.519426, 1)
@@ -226,7 +225,7 @@ render_target_update_mode = 4
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="MainCamera" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.13932)
 far = 500.0
 script = ExtResource("11_2udeo")
 position_strength = Vector3(0.1, 0.1, 0.1)
