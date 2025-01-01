@@ -112,6 +112,8 @@ size = Vector2(0.05, 0.05)
 [node name="Phone" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_xcwv4")
+speed = 0.02
+strength = 0.1
 
 [node name="ScreenLight" type="Node3D" parent="Phone"]
 transform = Transform3D(1.14425, 0, 0, 0, 0.997895, 3.55271e-15, 0, 0, 0.7489, 0, 0.049, 0.016)
@@ -224,6 +226,11 @@ render_target_update_mode = 4
 
 [node name="Node3D" type="Node3D" parent="."]
 
+[node name="MainCamera2" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.13932)
+fov = 49.7056
+far = 500.0
+
 [node name="MainCamera" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.13932)
 far = 500.0
@@ -240,6 +247,7 @@ material = SubResource("FogMaterial_eby4i")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.519447, 0, 0, 0, 0.423926, 0, 0, 0, 0.267162, -0.147203, 3.80065, -0.287909)
+visible = false
 cast_shadow = 0
 amount = 500
 lifetime = 500.0

@@ -31,7 +31,7 @@ texture = ExtResource("2_v870u")
 centered = false
 
 [node name="Snake" parent="." instance=ExtResource("1_8jpkb")]
-position = Vector2(40, 10)
+position = Vector2(40, 24)
 start_length = 8
 speed = 4.0
 

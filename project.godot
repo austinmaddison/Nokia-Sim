@@ -23,6 +23,8 @@ MidiController="*res://scripts/viz/MidiController.gd"
 
 [display]
 
+window/size/viewport_width=1000
+window/size/viewport_height=720
 window/stretch/aspect="keep_width"
 
 [dotnet]

@@ -149,8 +149,13 @@ if (!enable_backlight)
 }
 	color = mix(color, clear_coat_dirt_color.rgb, smoothstep(clear_coat_dirt_remap.x, clear_coat_dirt_remap.y, texture(clear_coat_roughness_map, UV).r) * clear_coat_dirt_color.a);
 
-	ALBEDO = color;
+// -----------------
+// Final Output
+// -----------------
 
+
+
+	ALBEDO = color;
 if (enable_backlight)
 {
 	EMISSION = vec3(backlight_color.rgb
