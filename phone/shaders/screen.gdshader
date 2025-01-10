@@ -136,51 +136,51 @@ void fragment(){
 	color = mix(color, back_color.rgb, back_color.a);
 	color = mix(color, fade_color.rgb, (1.0 - dot(NORMAL, CAMERA_DIRECTION_WORLD)) * fade_falloff);
 
-if (!enable_backlight)
-{
-	color = mix(color, substrate_shadow_color.rgb, substrate_shadow * substrate_shadow_color.a);
-}
+	if (!enable_backlight)
+	{
+		color = mix(color, substrate_shadow_color.rgb, substrate_shadow * substrate_shadow_color.a);
+	}
+	
 	color = mix(color, substrate_color.rgb, screen_mask * grid(st) * 0.2);
 	color = mix(color, substrate_color.rgb, substrate * substrate_color.a);
-//if (!enable_backlight)
-{
-	color = mix(color, frame_shadow_color.rgb, calc_frame_shadow(UV + offset - (vec2(bias.x, bias.y*-1.)*0.5)) * frame_shadow_color.a);
-
-}
+	
+	if (!enable_backlight)
+	{
+		color = mix(color, frame_shadow_color.rgb, calc_frame_shadow(UV + offset - (vec2(bias.x, bias.y*-1.)*0.5)) * frame_shadow_color.a);
+	}
+	
 	color = mix(color, clear_coat_dirt_color.rgb, smoothstep(clear_coat_dirt_remap.x, clear_coat_dirt_remap.y, texture(clear_coat_roughness_map, UV).r) * clear_coat_dirt_color.a);
 
-// -----------------
-// Final Output
-// -----------------
-
-
+	// -----------------
+	// Final Output
+	// -----------------
 
 	ALBEDO = color;
-if (enable_backlight)
-{
-	EMISSION = vec3(backlight_color.rgb
-	* smoothstep(backlight_remap.x, backlight_remap.y, texture(backlight_map, scale_from_center(UV, vec2(.98)) + offset).r)
-	* backlight_emmission_strength*4.
-	* clamp(
-		(1.0 - min(calc_substrate_bleed(st, vec2(1. - backlight_edge_bleed_strength, 1.0 + backlight_edge_bleed_strength)) * (1.- backlight_bleed_strength * 0.1), substrate) ) + backlight_bleed_strength * 0.1,
-		0.0, 1.0));
-}
+	
+	if (enable_backlight)
+	{
+		EMISSION = vec3(backlight_color.rgb
+		* smoothstep(backlight_remap.x, backlight_remap.y, texture(backlight_map, scale_from_center(UV, vec2(.98)) + offset).r)
+		* backlight_emmission_strength*4.
+		* clamp(
+			(1.0 - min(calc_substrate_bleed(st, vec2(1. - backlight_edge_bleed_strength, 1.0 + backlight_edge_bleed_strength)) * (1.- backlight_bleed_strength * 0.1), substrate) ) + backlight_bleed_strength * 0.1,
+			0.0, 1.0));
+	}
 
-if (enable_backlight)
-{
-	SPECULAR = max((1.0 - substrate), (1.0 - screen_mask * grid(st)))  * specular;
-}
-else
-{
-	SPECULAR = max((1.0 - substrate), (1.0 - screen_mask * grid(st))) - calc_frame_shadow(UV + offset - (vec2(bias.x, bias.y*-1.)*0.5))  * specular;
-}
+	if (enable_backlight)
+	{
+		SPECULAR = max((1.0 - substrate), (1.0 - screen_mask * grid(st)))  * specular;
+	}
+	else
+	{
+		SPECULAR = max((1.0 - substrate), (1.0 - screen_mask * grid(st))) - calc_frame_shadow(UV + offset - (vec2(bias.x, bias.y*-1.)*0.5))  * specular;
+	}
 
 	ROUGHNESS = smoothstep(back_roughness_remap.x, back_roughness_remap.y, texture(back_noise, UV*back_noise_scale + offset).r);
 
 	NORMAL_MAP = texture(clear_coat_normal_map, UV).rgb;
 	NORMAL_MAP_DEPTH = clear_coat_normal_depth;
-
+	METALLIC = smoothstep(0.1, 1.0, 1.0 - substrate) * 0.45;
 	CLEARCOAT = clear_coat_specular;
 	CLEARCOAT_ROUGHNESS = smoothstep(clear_coat_roughness_remap.x, clear_coat_roughness_remap.y,texture(clear_coat_roughness_map, UV).r);
-
 }
