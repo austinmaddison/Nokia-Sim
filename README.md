@@ -2,7 +2,7 @@
 
 # Nokia Simulator 📱🐍 (Work In Progress)
 ⚠️Snake has no collison lol, will continue work after my uni term is over.⚠️  
-__📖 Read full writeup of shader development [here](https://austin-maddison.xyz/notes/lcd-shader/)📖__
+__📖 Read full writeup of shader development [here](https://austin-maddison.xyz/notes/lcd-shader/) 📖__
 
 </div>
 
