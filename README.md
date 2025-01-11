@@ -25,7 +25,6 @@ Current features
         * Backlight
         * Fake Frame Shadows
         * Top Layer Specular and Color Imprefections - Scratches, Smear and Subtle Dirt
-*
 
 - Snake Game (Snake movement and placeholders so far.)
 
