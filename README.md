@@ -10,6 +10,9 @@ __📖 Read full writeup of shader development [here](https://austin-maddison.xy
 
 ![Nokia](https://github.com/user-attachments/assets/e9b00e20-6c5d-4876-819e-2aaeb3cdd695)
 
+[LCD Passive Matrix Shader](https://github.com/user-attachments/assets/4cbd5465-5046-4444-81a0-b308afe36e74)
+
+
 </div>
 
 This project's inital goal was just to try out **Godot 4.3**. 
